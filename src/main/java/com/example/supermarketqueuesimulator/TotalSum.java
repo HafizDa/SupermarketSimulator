@@ -1,14 +1,14 @@
 package com.example.supermarketqueuesimulator;
-
 import javafx.application.Platform;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 import java.text.NumberFormat;
-
-import javafx.scene.layout.BackgroundFill;
 
 public class TotalSum extends VBox {
 
@@ -21,8 +21,10 @@ public class TotalSum extends VBox {
     private final Label averageLabel;
     private final Label numClientsLabel;
     private final NumberFormat defaultFormat;
+    private final CustomerQueue queue;  // Add this line
 
-    public TotalSum() {
+    public TotalSum(CustomerQueue queue) {
+        this.queue = queue;  // Add this line
         defaultFormat = NumberFormat.getCurrencyInstance();
 
         setBackground(new Background(new BackgroundFill(Color.web("#222222"), null, null))); // Green
@@ -41,6 +43,11 @@ public class TotalSum extends VBox {
         numClientsLabel = new Label(CLIENTS);
         numClientsLabel.setTextFill(Color.WHITE);
         getChildren().add(numClientsLabel);
+
+
+
+
+
     }
 
     public synchronized void setOperation(double value) {

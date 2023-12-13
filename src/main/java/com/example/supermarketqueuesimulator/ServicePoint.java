@@ -1,5 +1,4 @@
 package com.example.supermarketqueuesimulator;
-
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -22,6 +21,8 @@ public class ServicePoint extends VBox implements Runnable {
     private final Label numItemLabel;
     private final NumberFormat defaultFormat;
     private final Button controlButton;
+    private final Button plusButton;
+    private final Button minusButton;
     private int speedMultiplier = 1;
     private boolean isOpen = true;
 
@@ -34,8 +35,10 @@ public class ServicePoint extends VBox implements Runnable {
         setSpacing(10);
 
         deskNumberLabel = new Label("Service point " + number);
-        deskNumberLabel.setTextFill(Color.ORANGE);
+        deskNumberLabel.setTextFill(Color.BLACK);
         deskNumberLabel.setStyle("-fx-font-weight: bold");
+        deskNumberLabel.setStyle("-fx-background-color: Orange; -fx-border-color: black; -fx-border-width: 2px; -fx-padding: 5px; -fx-spacing: 5px; -fx-alignment: center;");
+
         getChildren().add(deskNumberLabel);
 
         moneyLabel = new Label(defaultFormat.format(money));
@@ -53,11 +56,30 @@ public class ServicePoint extends VBox implements Runnable {
         // Add control button
         controlButton = new Button("Open");
         controlButton.setOnAction(event -> toggleStatus());
-        HBox buttonBox = new HBox(controlButton);
+
+        // Add "+" and "-" buttons
+        plusButton = new Button("+");
+        minusButton = new Button("-");
+        HBox buttonBox = new HBox(controlButton, plusButton, minusButton);
         buttonBox.setSpacing(5);
         getChildren().add(buttonBox);
+
+        // Set actions for buttons
+        plusButton.setOnAction(event -> increaseSpeed());
+        minusButton.setOnAction(event -> decreaseSpeed());
     }
 
+    private void increaseSpeed() {
+        if (speedMultiplier < 5) {
+            speedMultiplier++;
+        }
+    }
+
+    private void decreaseSpeed() {
+        if (speedMultiplier > 1) {
+            speedMultiplier--;
+        }
+    }
 
     @Override
     public void run() {
@@ -102,7 +124,6 @@ public class ServicePoint extends VBox implements Runnable {
         });
         customer = null;
     }
-
 
     private void toggleStatus() {
         isOpen = !isOpen;

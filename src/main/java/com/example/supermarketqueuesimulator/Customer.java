@@ -123,7 +123,5 @@ public class Customer extends VBox {
     }
 
 
-    private void updateUI() {
 
-    }
 }

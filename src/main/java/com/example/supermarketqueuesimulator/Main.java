@@ -15,6 +15,7 @@ public class Main extends Application {
         CustomerQueue queue = new CustomerQueue();
         new Thread(queue).start();
 
+
         SuperMarketGui superMarketGui = new SuperMarketGui("Supermarket Queue Simulator", 4, queue);
 
         superMarketGui.start(primaryStage);

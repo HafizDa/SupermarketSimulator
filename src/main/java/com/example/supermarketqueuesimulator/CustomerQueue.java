@@ -14,6 +14,8 @@ public class CustomerQueue extends HBox implements Runnable {
     private int clientNumber = 10;
     private final Logger logger = Logger.getLogger(CustomerQueue.class.getName());
 
+
+
     public CustomerQueue() {
         setSpacing(5);
 
@@ -36,17 +38,23 @@ public class CustomerQueue extends HBox implements Runnable {
         }
     }
 
-    private void addClient(int i) {
+    void addClient(int i) {
         Customer customer = new Customer(i);
         customers.add(customer);
-        Platform.runLater(() -> getChildren().add(customer));
-        updateUI();
+        Platform.runLater(() -> {
+            getChildren().add(customer);
+            updateUI();
+        });
     }
 
-    private Customer removeClient() {
+    private synchronized Customer removeClient() {
         Customer customer = customers.remove();
-        Platform.runLater(() -> getChildren().remove(customer));
-        updateUI();
+        Platform.runLater(() -> {
+            if (!getChildren().isEmpty()) {
+                getChildren().remove(customer);
+                updateUI();
+            }
+        });
         return customer;
     }
 
@@ -58,6 +66,9 @@ public class CustomerQueue extends HBox implements Runnable {
     }
 
     private void updateUI() {
-        setStyle("-fx-background-color: lightgrey");
+        setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px; -fx-padding: 5px; -fx-spacing: 5px; -fx-alignment: center;");
     }
+
+
+
 }
