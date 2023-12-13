@@ -1,4 +1,4 @@
-module com.example.supermarketcashiersimulator {
+module com.example.supermarketqueuesimulator {
     requires javafx.controls;
     requires javafx.fxml;
 

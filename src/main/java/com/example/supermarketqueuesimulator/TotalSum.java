@@ -10,7 +10,7 @@ import java.text.NumberFormat;
 
 import javafx.scene.layout.BackgroundFill;
 
-public class Summary extends VBox {
+public class TotalSum extends VBox {
 
     private double total = 0;
     private int numClients = 0;
@@ -22,10 +22,10 @@ public class Summary extends VBox {
     private final Label numClientsLabel;
     private final NumberFormat defaultFormat;
 
-    public Summary() {
+    public TotalSum() {
         defaultFormat = NumberFormat.getCurrencyInstance();
 
-        setBackground(new Background(new BackgroundFill(Color.web("#DC3030"), null, null))); // Green
+        setBackground(new Background(new BackgroundFill(Color.web("#222222"), null, null))); // Green
 
         setSpacing(10);
         setPadding(new javafx.geometry.Insets(10));

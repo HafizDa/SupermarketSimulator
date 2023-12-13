@@ -12,11 +12,12 @@ public class Main extends Application {
 
     @Override
     public void start(javafx.stage.Stage primaryStage) throws IOException {
-        ClientQueue queue = new ClientQueue();
+        CustomerQueue queue = new CustomerQueue();
         new Thread(queue).start();
 
-        MarketGUI marketGUI = new MarketGUI("Lidl Queueing Simulator", 4, queue);
-        new Thread(marketGUI).start();
-        marketGUI.start(primaryStage);
+
+        SuperMarketGui superMarketGui = new SuperMarketGui("Supermarket Queue Simulator", 4, queue);
+
+        superMarketGui.start(primaryStage);
     }
 }
