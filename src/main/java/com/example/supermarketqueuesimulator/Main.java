@@ -11,10 +11,9 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(javafx.stage.Stage primaryStage) throws IOException {
+    public void start(javafx.stage.Stage primaryStage) {
         CustomerQueue queue = new CustomerQueue();
         new Thread(queue).start();
-
 
         SuperMarketGui superMarketGui = new SuperMarketGui("Supermarket Queue Simulator", 4, queue);
 

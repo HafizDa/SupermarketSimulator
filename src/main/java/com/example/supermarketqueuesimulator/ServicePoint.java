@@ -58,11 +58,12 @@ public class ServicePoint extends VBox implements Runnable {
         getChildren().add(buttonBox);
     }
 
+
     @Override
     public void run() {
         try {
             Thread.sleep((int) (Math.random() * 10) * 1000);
-            while (true) {
+            while (!Thread.currentThread().isInterrupted()) {
                 if (customer == null && isOpen) {
                     customer = queue.callClient();
                     // Wait for the client to arrive
@@ -72,11 +73,13 @@ public class ServicePoint extends VBox implements Runnable {
                 Thread.sleep(500 / speedMultiplier); // Adjust speed here
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            // Log the exception using a logging framework
         }
     }
 
     private void process() throws InterruptedException {
+        double money = 0;
         int countItem = 0;
         double buy = 0;
         Platform.runLater(() -> clientLabel.setText("Customer " + customer.getNumber()));
@@ -85,8 +88,9 @@ public class ServicePoint extends VBox implements Runnable {
             buy = money += item;
             countItem++;
             int finalCountItem = countItem;
+            double finalMoney = money;
             Platform.runLater(() -> {
-                moneyLabel.setText(defaultFormat.format(money));
+                moneyLabel.setText(defaultFormat.format(finalMoney));
                 numItemLabel.setText("Item: " + finalCountItem);
             });
             Thread.sleep(1000 / speedMultiplier); // Adjust speed here
@@ -98,6 +102,7 @@ public class ServicePoint extends VBox implements Runnable {
         });
         customer = null;
     }
+
 
     private void toggleStatus() {
         isOpen = !isOpen;

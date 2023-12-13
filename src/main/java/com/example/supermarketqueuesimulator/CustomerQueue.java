@@ -5,11 +5,14 @@ import javafx.scene.layout.HBox;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CustomerQueue extends HBox implements Runnable {
 
     private final Queue<Customer> customers = new LinkedList<>();
     private int clientNumber = 10;
+    private final Logger logger = Logger.getLogger(CustomerQueue.class.getName());
 
     public CustomerQueue() {
         setSpacing(5);
@@ -22,13 +25,14 @@ public class CustomerQueue extends HBox implements Runnable {
     @Override
     public void run() {
         try {
-            while (true) {
+            while (!Thread.currentThread().isInterrupted()) {
                 int random = (int) (Math.random() * 10);
                 Thread.sleep(random * 1000L);
                 addClient(++clientNumber);
             }
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            logger.log(Level.SEVERE, "Thread was interrupted", e);
         }
     }
 
@@ -47,18 +51,13 @@ public class CustomerQueue extends HBox implements Runnable {
     }
 
     public synchronized Customer callClient() throws InterruptedException {
-        while (customers.isEmpty()) {
+        while (customers.isEmpty() && !Thread.currentThread().isInterrupted()) {
             Thread.sleep(900);
         }
         return removeClient();
     }
 
     private void updateUI() {
-
         setStyle("-fx-background-color: lightgrey");
-
-
-
     }
-
 }
