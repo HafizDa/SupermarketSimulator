@@ -1,3 +1,8 @@
+/**
+ * Represents the graphical user interface for the supermarket simulation.
+ * This class displays the simulation components and allows user interaction.
+ */
+
 package com.example.supermarketqueuesimulator;
 
 import javafx.application.Application;
@@ -5,17 +10,33 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Represents the graphical user interface for the supermarket simulation.
+ * This class displays the simulation components and allows user interaction.
+ */
 public class SuperMarketGui extends Application implements Runnable {
 
     private final String name;
     private final int desks;
     private final CustomerQueue queue;
 
+    /**
+     * Constructor for the SuperMarketGui class.
+     * @param name The name of the supermarket.
+     * @param desks The number of service points in the supermarket.
+     * @param queue The queue of customers in the supermarket.
+     */
     public SuperMarketGui(String name, int desks, CustomerQueue queue) {
         this.name = name;
         this.desks = desks;
         this.queue = queue;
     }
+
+    /**
+     * The start method for the JavaFX application.
+     * This method sets up the GUI and starts the simulation.
+     * @param primaryStage The primary stage for this application.
+     */
 
     @Override
     public void start(Stage primaryStage) {
@@ -24,7 +45,7 @@ public class SuperMarketGui extends Application implements Runnable {
         Scene scene = new Scene(borderPane, 650, 350);
         primaryStage.setScene(scene);
 
-        // Set background color for the whole scene
+        //  background color for the whole scene
         scene.getRoot().setStyle("-fx-background-color: #008000;");  // Green
 
         TotalSum totalSum = new TotalSum( queue);
@@ -33,9 +54,9 @@ public class SuperMarketGui extends Application implements Runnable {
         javafx.scene.layout.HBox hboxDesks = new javafx.scene.layout.HBox();
         borderPane.setCenter(hboxDesks);
 
-        // Set background color and spacing for desks area
+        // background color and spacing for desks area
         hboxDesks.setStyle("-fx-background-color: #7db6c6");  // Blue
-        hboxDesks.setSpacing(10);
+        hboxDesks.setSpacing(20);
 
 
         ServicePoint servicePoint;
@@ -58,6 +79,10 @@ public class SuperMarketGui extends Application implements Runnable {
         primaryStage.show();
     }
 
+    /**
+     * The run method for the Runnable interface.
+     * This method launches the JavaFX application.
+     */
     @Override
     public void run() {
         launch();

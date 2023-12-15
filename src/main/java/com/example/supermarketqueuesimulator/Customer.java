@@ -1,21 +1,37 @@
+/**
+ * Represents a customer in the supermarket simulation.
+ * Each customer has a unique identifier, arrival time, and number of items in their cart.
+ */
 package com.example.supermarketqueuesimulator;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Represents a customer in the supermarket simulation.
+ * Each customer has a unique identifier, arrival time, and number of items in their cart.
+ */
 public class Customer extends VBox {
 
     private final int number;
-    private final List<Double> products = new ArrayList<>();
+    private final double arrivalTime;
+    private final List<Double> products;
 
+    /**
+     * Constructor for the Customer class.
+     * @param number The unique identifier for the customer.
+     */
     public Customer(int number) {
         this.number = number;
+        this.arrivalTime = System.currentTimeMillis();
+        this.products = new ArrayList<>();
         createListOfProducts();
 
         setSpacing(5);
@@ -30,12 +46,24 @@ public class Customer extends VBox {
         numberOfItems.setTextFill(Color.BLACK);
         getChildren().add(numberOfItems);
 
-        // Set green background
         setStyle("-fx-background-color: #DC3030");  // Anger
-
         setColor(products.size());
+
+        // Insert customer data into the database
+        insertCustomerData();
     }
 
+    /**
+     * Method to insert customer data into the database.
+     * Currently empty and needs to be implemented.
+     */
+    void insertCustomerData() {
+    }
+
+    /**
+     * Method to create a list of products for the customer.
+     * The number of products is randomly generated.
+     */
     private void createListOfProducts() {
         Random rand = new Random();
         int MAX_ITEMS = 20;
@@ -51,16 +79,12 @@ public class Customer extends VBox {
         setColor(products.size());
     }
 
-    public int getNumber() {
-        return number;
-    }
-
-    public Iterator<Double> getProducts() {
-        return products.iterator();
-    }
-
+    /**
+     * Method to set the color of the customer based on the number of items they have.
+     * @param size The number of items the customer has.
+     */
     private void setColor(int size) {
-              switch (size) {
+        switch (size) {
             case 1:
                 setStyle("-fx-background-color: #FF0000");  // Red
                 break;
@@ -120,8 +144,60 @@ public class Customer extends VBox {
 
 
         }
+        }
+
+    /**
+     * Method to get the arrival time of the customer.
+     * @return The arrival time of the customer.
+     */
+    public double getArrivalTime() {
+        return arrivalTime;
     }
 
+    /**
+     * Method to get the entry time of the customer.
+     * @return The entry time of the customer.
+     */
+    public double getEntryTime() {
+        return arrivalTime;
+    }
 
+    /**
+     * Method to get the number of items the customer has.
+     * @return The number of items the customer has.
+     */
+    public int getNumberOfItems() {
+        return products.size();
+    }
 
+    /**
+     * Method to get the customer number.
+     * @return The customer number.
+     */
+    public String getCustomerNumber() {
+        return "Customer " + number;
+    }
+
+    /**
+     * Method to print customer data from the database.
+     */
+    public static void printCustomerData() {
+        // Implementation of printCustomerData method
+    }
+
+    /**
+     * Method to get the customer number.
+     * @return The customer number.
+     */
+    public int getNumber() {
+        return number;
+    }
+
+    /**
+     * Method to get an iterator for the products the customer has.
+     * @return An iterator for the products.
+     */
+    public Iterator<Double> getProducts() {
+        return products.iterator();
+    }
 }
