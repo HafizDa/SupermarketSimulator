@@ -3,10 +3,13 @@
  * It initializes the customer queue, market simulation, and the graphical user interface.
  */
 
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.main;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import com.supermarket.simulation.core.CustomerQueue;
+import com.supermarket.simulation.ui.SuperMarketGui;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -3,14 +3,18 @@
  * Each service point has an associated queue and serves customers in a FIFO manner.
  */
 
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.service;
 
+import com.supermarket.simulation.main.TotalSum;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import com.supermarket.simulation.core.Clock;
+import com.supermarket.simulation.core.Customer;
+import com.supermarket.simulation.core.CustomerQueue;
 
 import java.text.NumberFormat;
 import java.util.Iterator;

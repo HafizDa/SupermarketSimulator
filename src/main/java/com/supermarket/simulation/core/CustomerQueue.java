@@ -2,7 +2,7 @@
  * Represents a queue of customers in the supermarket simulation.
  * Customers are added to this queue for processing by service points.
  */
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.core;
 
 import javafx.application.Platform;
 import javafx.scene.layout.HBox;
@@ -63,7 +63,7 @@ public class CustomerQueue extends HBox implements Runnable {
      * The run method for the Runnable interface.
      * Continuously adds customers to the queue and inserts their data into the database.
      */
-    void addClient(int i) {
+    public void addClient(int i) {
         Customer customer = new Customer(i);
         customers.add(customer);
         Platform.runLater(() -> {
@@ -76,7 +76,7 @@ public class CustomerQueue extends HBox implements Runnable {
      * Removes a customer from the queue.
      * @return The removed customer.
      */
-    private synchronized Customer removeClient() {
+    public synchronized Customer removeClient() {
         Customer customer = customers.remove();
         Platform.runLater(() -> {
             if (!getChildren().isEmpty()) {
@@ -132,7 +132,7 @@ public class CustomerQueue extends HBox implements Runnable {
         return customer;
     }
 
-    void updateUI() {
+    public void updateUI() {
         setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px; -fx-padding: 5px; -fx-spacing: 5px; -fx-alignment: center;");
     }
     /**

@@ -2,7 +2,7 @@
  * Represents a customer in the supermarket simulation.
  * Each customer has a unique identifier, arrival time, and number of items in their cart.
  */
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.core;
 
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
@@ -200,4 +200,6 @@ public class Customer extends VBox {
     public Iterator<Double> getProducts() {
         return products.iterator();
     }
+
+
 }

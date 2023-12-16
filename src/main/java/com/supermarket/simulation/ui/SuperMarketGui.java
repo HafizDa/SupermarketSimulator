@@ -3,12 +3,15 @@
  * This class displays the simulation components and allows user interaction.
  */
 
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.ui;
 
+import com.supermarket.simulation.service.ServicePoint;
+import com.supermarket.simulation.main.TotalSum;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import com.supermarket.simulation.core.CustomerQueue;
 
 /**
  * Represents the graphical user interface for the supermarket simulation.

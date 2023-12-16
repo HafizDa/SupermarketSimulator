@@ -2,7 +2,7 @@
  * This class is used to display the total sum of the money spent by the customers in the supermarket.
  * It also displays the average payment by customer and the total number of customers served.
  */
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.main;
 
 import javafx.application.Platform;
 import javafx.scene.layout.Background;
@@ -10,6 +10,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import com.supermarket.simulation.core.CustomerQueue;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.Instant;

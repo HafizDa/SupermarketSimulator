@@ -1,9 +1,4 @@
-/**
- * Defines the com.example.supermarketqueuesimulator module.
- * This module requires javafx.controls, javafx.fxml, java.logging, and java.sql.
- * It opens the com.example.supermarketqueuesimulator package to javafx.fxml and exports it.
- */
-module com.example.supermarketqueuesimulator {
+module com.supermarket.simulation {
     // This module requires javafx.controls for JavaFX GUI controls
     requires javafx.controls;
 
@@ -16,9 +11,33 @@ module com.example.supermarketqueuesimulator {
     // This module requires java.sql for SQL database management
     requires java.sql;
 
-    // This module opens the com.example.supermarketqueuesimulator package to javafx.fxml
-    opens com.example.supermarketqueuesimulator to javafx.fxml;
+    // This module opens the com.supermarket.simulation.ui package to javafx.fxml
+    opens com.supermarket.simulation.ui to javafx.fxml;
 
-    // This module exports the com.example.supermarketqueuesimulator package
-    exports com.example.supermarketqueuesimulator;
+    // This module exports the com.supermarket.simulation.ui package
+    exports com.supermarket.simulation.ui;
+
+    // This module opens the com.supermarket.simulation.main package to javafx.fxml
+    opens com.supermarket.simulation.main to javafx.fxml;
+
+    // This module exports the com.supermarket.simulation.main package
+    exports com.supermarket.simulation.main;
+
+    // This module opens the com.supermarket.simulation.service package to javafx.fxml
+    opens com.supermarket.simulation.service to javafx.fxml;
+
+    // This module exports the com.supermarket.simulation.service package
+    exports com.supermarket.simulation.service;
+
+    // This module opens the com.supermarket.simulation.core package to javafx.fxml
+    opens com.supermarket.simulation.core to javafx.fxml;
+
+    // This module exports the com.supermarket.simulation.core package
+    exports com.supermarket.simulation.core;
+
+    // This module opens the com.supermarket.simulation.db package to javafx.fxml
+    opens com.supermarket.simulation.db to javafx.fxml;
+
+    // This module exports the com.supermarket.simulation.db package
+    exports com.supermarket.simulation.db;
 }
