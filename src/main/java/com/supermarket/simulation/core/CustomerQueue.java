@@ -22,8 +22,10 @@ public class CustomerQueue extends HBox implements Runnable {
     private final Queue<Customer> customers = new LinkedList<>();
     private int clientNumber = 10;
     private final Logger logger = Logger.getLogger(CustomerQueue.class.getName());
+
     /**
      * Constructor for the CustomerQueue class.
+     *
      * @param dbConnection The database connection.
      */
     public CustomerQueue(Connection dbConnection) {
@@ -33,7 +35,6 @@ public class CustomerQueue extends HBox implements Runnable {
             addClient(i);
         }
     }
-
 
 
     /**
@@ -62,8 +63,9 @@ public class CustomerQueue extends HBox implements Runnable {
     }
 
     /**
-     * The run method for the Runnable interface.
-     * Continuously adds customers to the queue and inserts their data into the database.
+     * Adds a customer to the queue.
+     *
+     * @param i The customer number.
      */
     public void addClient(int i) {
         Customer customer = new Customer(i);
@@ -76,6 +78,7 @@ public class CustomerQueue extends HBox implements Runnable {
 
     /**
      * Removes a customer from the queue.
+     *
      * @return The removed customer.
      */
     public synchronized Customer removeClient() {
@@ -91,6 +94,7 @@ public class CustomerQueue extends HBox implements Runnable {
 
     /**
      * Calls a customer from the queue.
+     *
      * @return The called customer.
      * @throws InterruptedException If the thread is interrupted.
      */
@@ -134,11 +138,17 @@ public class CustomerQueue extends HBox implements Runnable {
         return customer;
     }
 
+    /**
+     * Updates the user interface.
+     */
+
     public void updateUI() {
         setStyle("-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1px; -fx-padding: 5px; -fx-spacing: 5px; -fx-alignment: center;");
     }
+
     /**
      * Gets the customer number.
+     *
      * @return The customer number.
      */
     public int getCustomerNumber() {
@@ -148,6 +158,7 @@ public class CustomerQueue extends HBox implements Runnable {
 
     /**
      * Gets the total wait time.
+     *
      * @return The total wait time.
      */
     public double getTotalWaitTime() {
