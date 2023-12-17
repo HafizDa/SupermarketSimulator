@@ -34,6 +34,8 @@ public class CustomerQueue extends HBox implements Runnable {
         }
     }
 
+
+
     /**
      * The run method for the Runnable interface.
      * Continuously adds customers to the queue and inserts their data into the database.

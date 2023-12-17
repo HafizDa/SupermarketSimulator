@@ -53,6 +53,8 @@ public class Customer extends VBox {
         insertCustomerData();
     }
 
+
+
     /**
      * Method to insert customer data into the database.
      * Currently empty and needs to be implemented.
@@ -200,6 +202,7 @@ public class Customer extends VBox {
     public Iterator<Double> getProducts() {
         return products.iterator();
     }
+
 
 
 }

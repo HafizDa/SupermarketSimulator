@@ -1,4 +1,4 @@
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.test;
 
 import org.junit.jupiter.api.Test;
 

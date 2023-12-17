@@ -24,8 +24,7 @@ public class CustomerDAO {
      */
     public static void insertCustomer(int customerNumber, double totalSpent, int numberOfItems) {
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String sql = "INSERT INTO customer (customer_number, total_spent, number_of_items) VALUES (?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+String sql = "INSERT INTO customer (CustomerNumber, TotalSpent, NumberOfItems) VALUES (?, ?, ?)";            try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 statement.setInt(1, customerNumber);
                 statement.setDouble(2, totalSpent);
                 statement.setInt(3, numberOfItems);

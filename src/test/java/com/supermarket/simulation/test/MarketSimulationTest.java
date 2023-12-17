@@ -1,17 +1,16 @@
-package com.example.supermarketqueuesimulator;
+package com.supermarket.simulation.test;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ServicePointTest {
+class MarketSimulationTest {
 
     @Test
     void run() {
     }
 
-
     @Test
-    void addCustomer() {
+    void stopSimulation() {
     }
 }
