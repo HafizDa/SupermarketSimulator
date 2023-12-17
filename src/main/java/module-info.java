@@ -1,9 +1,3 @@
-/**
- * This module is the main module of the application.
- * It contains the main class of the application.
- * It also contains the ma
- */
-
 module com.supermarket.simulation {
     // This module requires javafx.controls for JavaFX GUI controls
     requires javafx.controls;
